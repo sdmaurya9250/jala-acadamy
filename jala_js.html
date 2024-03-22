@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fruit Sorting</title>
+<style>
+    /* Styling to hide button */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Fruits</h2>
+
+<!-- Button to trigger sorting -->
+<button onclick="sortFruitsDescending()">Sort Fruits Descending</button>
+
+<!-- Display area for sorted fruits -->
+<p id="sortedFruits"></p>
+
+<!-- Button to disappear -->
+<button onclick="disappear(this)">Click Me to Disappear</button>
+
+<!----------------------------------->
+<!-- Counter display -->
+<p>Count: <span id="counter">0</span></p>
+
+<!-- Count button -->
+<button onclick="incrementCounter()">Count</button>
+
+<!--couner with geter and setter methjd---------------------------------------------->
+<!--couner with geter and setter method using object prottypes------------------------->
+<!-- Counter display -->
+<p>Count: <span id="counterDisplay"></span></p>
+
+<!-- Count buttons -->
+<button onclick="incrementCounter()">Increment</button>
+<button onclick="decrementCounter()">Decrement</button>
+
+
+<!-------------------------------------------------------------->
+<!-- Date and time display -->
+<p id="dateTimeDisplay"></p>
+
+<!-- Button to display date and time -->
+<button id="dateTimeButton">Show Date and Time</button>
+
+<!---------------------------------------------------------->
+<!-- Form with text input and submit button -->
+<form id="myForm">
+    <label for="textInput">Enter Text:</label>
+    <input type="text" id="textInput" name="textInput">
+    <button type="button" onclick="validateForm()">Submit</button>
+  </form>
+  
+  <!-- Error message display -->
+  <p id="errorMessage" style="color: red;"></p>
+
+<!----------------------------------------------------------------------------------------------------------->
+
+<script>
+// Array of fruit names
+var fruits = ["Apple", "Banana", "Orange", "Grapes", "Pineapple"];
+
+// Function to sort fruits in descending order
+function sortFruitsDescending() {
+    fruits.sort(function(a, b) {
+        return b.localeCompare(a); // Compare function for sorting in descending order
+    });
+    displaySortedFruits();
+}
+
+// Function to display sorted fruits
+function displaySortedFruits() {
+    var sortedFruitsElement = document.getElementById("sortedFruits");
+    sortedFruitsElement.innerHTML = "Sorted Fruits (Descending): " + fruits.join(", ");
+
+}
+
+/////////////////////////////////////////////////////////////////////
+
+var person = {
+  name: "John",
+  age: 30,
+  city: "New York"
+};
+
+// Iterate over the properties of the object using a for...in loop
+for (var key in person) {
+  if (person.hasOwnProperty(key)) { // Check if the property belongs to the object itself, not inherited
+    console.log(key + ": " + person[key]);
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// Creating the person object
+var person = {
+  firstname: "John",
+  lastname: "Doe"
+};
+
+// Accessing properties using dot notation
+console.log("Using dot notation:");
+console.log("Firstname: " + person.firstname);
+console.log("Lastname: " + person.lastname);
+
+// Accessing properties using bracket notation
+console.log("\nUsing bracket notation:");
+console.log("Firstname: " + person["firstname"]);
+console.log("Lastname: " + person["lastname"]);
+
+///////////////////////////////////////////////////////////
+
+var x; // Declaration
+x = 10; // Initialization
+
+console.log(x); // Output: 10
+
+//////////////////////////////////////////////////
+
+"use strict"; // Enable strict mode
+
+// Variable hoisting with initialization first then declaration
+x = 10; // Initialization
+
+console.log(x); // Output: Error: Uncaught ReferenceError: x is not defined
+
+var x; // Declaration
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+// Function to make the clicked button disappear
+function disappear(button) {
+  button.classList.add("hidden"); // Add 'hidden' class to hide the button
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+// Define a function
+function greet(message) {
+  console.log(message + ", " + this.name);
+}
+
+// Create an object
+var person = {
+  name: "John"
+};
+
+// Using call()
+console.log("Using call():");
+greet.call(person, "Hello"); // Output: Hello, John
+
+// Using apply()
+console.log("\nUsing apply():");
+greet.apply(person, ["Hi"]); // Output: Hi, John
+
+///////////////////////////////////////////////////////////////////////////////
+
+// Function to increment the counter
+function incrementCounter() {
+  // Get the current value of the counter
+  var counterElement = document.getElementById("counter");
+  var currentValue = parseInt(counterElement.innerText);
+
+  // Increment the counter value
+  var newValue = currentValue + 1;
+
+  // Update the counter display
+  counterElement.innerText = newValue;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+// Counter object with getter and setter
+var counter = {
+  _count: 0, // Private variable to store the count
+
+  // Getter for count
+  get count() {
+    return this._count;
+  },
+
+  // Setter for count
+  set count(value) {
+    this._count = value;
+    // Update the counter display
+    document.getElementById("counterDisplay").innerText = this._count;
+  }
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+// Function to increment the counter
+function incrementCounter() {
+  counter.count += 1;
+}
+
+// Function to decrement the counter
+function decrementCounter() {
+  counter.count -= 1;
+}
+
+// Initialize the counter display
+document.getElementById("counterDisplay").innerText = counter.count;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Counter object with prototypes
+function Counter() {
+  this._count = 0;
+  this.step = 1; // Increment/decrement step
+  this.max = Infinity; // Maximum value
+  this.min = -Infinity; // Minimum value
+}
+
+// Increment method
+Counter.prototype.increment = function() {
+  if (this._count + this.step <= this.max) {
+    this._count += this.step;
+  }
+  this.updateDisplay();
+};
+
+// Decrement method
+Counter.prototype.decrement = function() {
+  if (this._count - this.step >= this.min) {
+    this._count -= this.step;
+  }
+  this.updateDisplay();
+};
+
+// Update display method
+Counter.prototype.updateDisplay = function() {
+  document.getElementById("counterDisplay").innerText = this._count;
+};
+
+// Create a counter object
+var counter = new Counter();
+
+// Initialize the counter display
+counter.updateDisplay();
+
+// Function to increment the counter
+function incrementCounter() {
+  counter.increment();
+}
+
+// Function to decrement the counter
+function decrementCounter() {
+  counter.decrement();
+}
+/////////////////////////////////////////////////////////////////////////////
+
+// Function to display current date and time
+function displayDateTime() {
+  var currentDateTime = new Date();
+  var formattedDateTime = currentDateTime.toLocaleString();
+  document.getElementById("dateTimeDisplay").innerText = "Current Date and Time: " + formattedDateTime;
+}
+
+// Add event listener to the button
+document.getElementById("dateTimeButton").addEventListener("click", displayDateTime);
+
+/////////////////////////////////////////////////////////////////////////////////
+
+// Function to validate the form
+function validateForm() {
+  var inputText = document.getElementById("textInput").value;
+
+  // Check if the text input is empty
+  if (inputText.trim() === "") {
+    // Display error message
+    document.getElementById("errorMessage").innerText = "Text input cannot be empty.";
+  } else {
+    // Reset error message
+    document.getElementById("errorMessage").innerText = "";
+    // Perform further actions (submit form, etc.)
+    console.log("Form submitted successfully!");
+  }
+}
+/////////////////////////////////////////////////////////////////////////////////////
+
+// Function to set a cookie
+function setCookie(cookieName, cookieValue, expirationDays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+}
+
+// Function to get a cookie by name
+function getCookie(cookieName) {
+  var name = cookieName + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var cookieArray = decodedCookie.split(';');
+  for(var i = 0; i < cookieArray.length; i++) {
+    var cookie = cookieArray[i].trim();
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return "";
+}
+
+// Function to check if a cookie exists
+function checkCookie(cookieName) {
+  var cookieValue = getCookie(cookieName);
+  if (cookieValue !== "") {
+    console.log("Cookie '" + cookieName + "' found with value: " + cookieValue);
+  } else {
+    console.log("Cookie '" + cookieName + "' not found.");
+  }
+}
+
+// Set a cookie
+setCookie("username", "John Doe", 30);
+
+// Get and display the value of the cookie
+var username = getCookie("username");
+console.log("Username: " + username);
+
+// Check if a cookie exists
+checkCookie("username");
+
+///////////////////////////////////////////////////////
+
+// Create a JSON object
+var person = {
+  name: "John",
+  age: 30,
+  address: {
+    street: "123 Main St",
+    city: "New York",
+    country: "USA"
+  }
+};
+
+// Access properties using dot notation
+console.log("Name: " + person.name);
+console.log("Age: " + person.age);
+console.log("Street: " + person.address.street);
+console.log("City: " + person.address.city);
+console.log("Country: " + person.address.country);
+
+</script>
+
+</body>
+</html>

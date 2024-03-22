@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    /* Table with a black border */
+    table {
+      border: 2px solid #000;
+      border-collapse: collapse;
+      margin: 50px auto;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    /* Table cell styling */
+    td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    /* Apply table-layout: auto (default) */
+    table.auto-table {
+      table-layout: auto;
+    }
+
+    /* Hover effect on the table */
+    table:hover {
+      border-color: #3498db;
+    }
+
+    /* Example content styling */
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+  </style>
+  <title>Table Border Example</title>
+</head>
+<body>
+  <h1>Table Border Example</h1>
+
+  <table class="auto-table">
+    <thead>
+      <tr>
+        <th>Name </th>
+        <th>Age</th>
+        <th>city</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>sikha</td>
+        <td> 25</td>
+        <td>badalapur</td>
+      </tr>
+      <tr>
+        <td>sakshi</td>
+        <td>23</td>
+        <td>mumbai</td>
+      </tr>
+      <tr>
+        <td> shiv</td>
+        <td> 24</td>
+        <td>Up</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    // JavaScript to handle background color change on hover
+    const table = document.querySelector('table');
+    table.addEventListener('mouseenter', () => {
+      document.body.style.backgroundColor = '#ecf0f1';
+    });
+    table.addEventListener('mouseleave', () => {
+      document.body.style.backgroundColor = '#f5f5f5';
+    });
+  </script>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> hii</title>
+        
+    </head>
+   <body>
+        <artical>
+        <H1>Registration form</H1>
+        
+<form>
+    <table>
+        <tr>
+            <td>
+                <label for="uname">Name</label>
+            </td>
+            <td>
+                <input type="text" id="uname" name="username">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="uemail">Email</label>
+            </td>
+            <td>
+                <input type="text" id="uemail" name="usermail">
+                <button type="button">Check</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="age">Age</label>
+            </td>
+            <td>
+                <input type="text" name="userage" id="age" size="2" maxlength="2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="date of birth">DOB</label>
+            </td>  
+                    <td>
+                        <input type="date" value="2017-06-01"/>                
+                    </td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Country</label>
+            </td>
+            <td>
+                <input type="text" value="India" name="country" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                    <label for="pass">Password</label>
+            </td>
+            <td>
+                    <input type="password" id="pass">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="res">Resume</label>
+            </td>
+            <td>
+                <input type="file" id="res">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Hobbies</label>
+            </td>
+            <td>
+                <label>
+                    <input type="checkbox" checked> Cricket
+                </label>
+                <label>
+                    <input type="checkbox"> Football
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Gender</label>
+            </td>
+            <td>
+                <label>
+                    <input type="radio" value="f" name="gender"> Female</label>
+                    <label>
+                    <input value="m" type="radio" name="gender"> Male</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                    <label for="city">City</label>
+            </td>
+            <td>
+                    <select id="city" name="city">
+                        <option disabled selected>--Choose City--</option>
+                            <optgroup label="Metros">
+                                <option>New Delhi</option>
+                                <option>Mumbai</option>
+                                <option>Channai</option>
+                                <option>Kolkata</option>
+                            </optgroup>
+                            <optgroup label="Others">
+                                <option>Noida</option>
+                                <option>Gurgram</option>
+                                <option>Faridabad</option>
+                                <option>Gaziabad</option>
+                            </optgroup>
+                    </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Address</label>
+            </td>
+            <td>
+                <textarea rows="4" cols="40"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Submit">
+                <input type="reset">
+            </td>
+        </tr>
+    </table>
+</form>
+
+</artical>
+
+
+<!--Use CSS animations (name,duration,iteration-count & delay) and
+paginations(Hoverable,with and without spaces).-->
+
+<style>
+    /* CSS Animation */
+    @keyframes slideIn {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    .animated-box {
+        width: 100px;
+        height: 100px;
+        background-color: #3498db;
+        animation: slideIn 1s ease-in-out 2 alternate;
+        /* animation-name, duration, timing-function, iteration-count, direction */
+    }
+
+    /* Pagination with Spaces */
+    .pagination {
+        display: inline-flex;
+        gap: 8px;
+    }
+
+    /* Pagination without Spaces */
+    .pagination-no-space a {
+        display: inline-block;
+        margin-right: 8px;
+        text-decoration: none;
+        padding: 5px 10px;
+        background-color: #2ecc71;
+        color: #fff;
+        border-radius: 3px;
+    }
+
+    .pagination-no-space a:hover {
+        background-color: #27ae60;
+    }
+</style>
+<title>CSS Animations and Paginations</title>
+</head>
+<body>
+<!-- Animated Box -->
+<div class="animated-box"></div>
+
+<!-- Pagination with Spaces -->
+<div class="pagination">
+    <a href="#">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+</div>
+
+<!-- Pagination without Spaces -->
+<div class="pagination-no-space">
+    <a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a>
+</div>
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
+
+</body>
+</html>
